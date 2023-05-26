@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+{% block content %}
+<div class="car">
+    <img src="/media/{{car.5}}" width="200px" alt="photo du véhicule">
+    <div>Marque: {{car.1}} </div>
+    <div>Modèle: {{car.2}} </div>
+    <div>Prix: {{car.3}} </div>
+    {% if request.session.user.7 == 'admin' %}
+        <span>
+            <a href="/cars/{{car.0}}/delete">Supprimer</a>
+            <a href="/cars/{{car.0}}/edit">Modifier</a>
+        </span>
+    {% else %}
+    <!-- Utiliser le middlewares d'authentification pour forcer l'utilisateur à se connecter avant de reserver -->
+            <a href="/cars/{{car.0}}/reserver">Ajouter à la réservation</a>
+    {% endif %}
+</div car>
+{% endblock %}
